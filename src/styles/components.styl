@@ -1,0 +1,52 @@
+/*******************************
+ * Botões
+ *******************************/
+
+// Botão padrão
+.btn
+  background-color $color-blue
+  color #fff
+  padding 10px 20px
+  border-radius 5px
+  border none
+  cursor pointer
+  font-weight bold
+  transition background-color 0.3s
+
+.btn:hover
+  background-color darken($color-blue, 10%)
+
+.btn:disabled
+  background-color $color-cadet-blue
+  cursor not-allowed
+
+// Botão verde
+.btn-green
+  background-color $color-green
+
+.btn-green:hover
+  background-color darken($color-green, 10%)
+
+// Botão vermelho
+.btn-red
+  background-color $color-red
+
+.btn-red:hover
+  background-color darken($color-red, 10%)
+
+/*******************************
+ * Inputs
+ *******************************/
+
+.form-control
+  padding 10px
+  border-radius 5px
+  border 2px solid $color-light-steel-blue
+  font-size 16px
+  font-family $main-font
+  transition border-color 0.3s
+  outline none
+  color $color-charcoal-blue
+
+.form-control:focus
+  border-color $color-blue
