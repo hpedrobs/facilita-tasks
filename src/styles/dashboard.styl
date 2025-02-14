@@ -1,0 +1,165 @@
+// Box Head
+.box-head
+  display flex
+  flex-direction column
+  height 100dvh
+
+// Sidebar
+.sidebar
+  display flex
+  align-items center
+  justify-content space-between 
+  background-color $color-blue
+  padding 10px 15px
+
+  button.menu-toggle
+    display flex
+    background-color transparent
+    border none
+    color $color-white
+    cursor pointer
+
+    img
+      width 25px
+
+  .logo
+    display flex
+
+  .logo img
+    width 50px
+  
+  ul.menu
+    display none
+    background-color $color-blue
+    position absolute
+    top 68px
+    left 0
+    padding 15px 0
+    width 100%
+    list-style none
+    z-index 1000
+    
+  ul.menu li
+    background-color $color-blue
+    border 2px solid $color-sky-blue
+    border-left none
+    border-right none
+    border-bottom none
+    display flex
+    gap 10px
+    align-items center
+    padding 15px
+
+  ul.menu lifirst-child
+    border-bottom none 
+
+  ul.menu lilast-child
+    border 2px solid $color-sky-blue
+
+  ul.menu li.active
+    background-color darken($color-blue, 10%)
+    border-left none
+    border-right none
+  
+  ul.menu li .icon
+    display flex
+  
+  ul.menu li a
+    color $color-white
+    text-decoration none
+    font-size 12px
+    font-weight bold
+
+  ul.menu li img.icon
+    width 50px
+    height 50px
+    display flex
+    justify-content center
+    align-items center
+    cursor pointer
+    transition background-color 0.3s
+    border 1px solid $color-white
+
+    &hover
+      background-color rgba(0, 0, 0, 0.1)
+
+  @media screen and (max-width 576px)
+    height auto
+
+  @media screen and (min-width 992px)
+    ul.menu
+      display block!important
+      width 105px
+      position relative
+      top 0
+      left 0
+      margin-top auto
+      margin-bottom auto
+    
+    ul.menu li
+      flex-direction column
+      padding-left 10px
+      padding-right 10px
+
+    button.menu-toggle
+      display none
+
+@media screen and (min-width 992px)
+  .box-head
+    flex-direction row
+    
+  .sidebar
+    width 105px
+    flex-direction column
+    justify-content start
+    height 100dvh  
+
+.wrapper
+  display flex
+  flex-direction column
+  width 100%
+  height 100%
+
+// Top Bar
+.top-bar
+  display none
+  align-items center
+  justify-content end
+  background-color $color-white
+  padding 10px 15px
+  width 100%
+  height max-content
+
+  .user-data
+    display flex
+    flex-direction column
+
+  .user-info
+    display flex
+    align-items center
+    font-size 15px
+    gap 10px
+
+    .title
+      color $color-gunmetal
+      font-size 15px
+      font-weight 700
+
+    .subtitle
+      color $color-blue
+      font-size 12px
+      font-weight 600
+  
+    img
+      width 30px
+      border-radius 50%
+
+@media screen and (min-width 992px)
+  .top-bar
+    display flex
+
+// Content
+main.content
+  overflow auto
+  width 100%
+  height 100%
