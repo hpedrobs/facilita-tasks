@@ -1,37 +1,78 @@
 // Container principal
 .container
-  max-width $container-max-width
-  width 100%
-  margin 0 auto
-  padding 0 $gutter-width
+  max-width: $container-max-width
+  width: 100%
+  margin: 0 auto
+  padding: 0 $gutter-width
+
+.container-full
+  width: 100%
+  padding: 0 $gutter-width
 
 // Grid system
 .row
-  display flex
-  flex-wrap wrap
-  margin-left -($gutter-width / 2)
-  margin-right -($gutter-width / 2)
+  display: flex
+  flex-wrap: wrap
+  width: 100%
 
+// Coluna base (ocupa 100% por padrão)
 .col
-  padding-left ($gutter-width / 2)
-  padding-right ($gutter-width / 2)
+  flex: 1 0 100%
+  max-width: 100%
+  padding-left: ($gutter-width / 2)
+  padding-right: ($gutter-width / 2)
 
-// Definição das colunas (1 a 12)
-for $i in 1 .. 12
-  .col-{$i}
-    flex 0 0 ($i / 12) * 100%
-    max-width ($i / 12) * 100%
+// Sistema de colunas (Mobile-first)
+for i in 1..13
+  .col-{i}
+    flex: 0 0 (i / 12) * 100%
+    max-width: (i / 12) * 100%
 
-// Responsividade para tablets (máx. 768px)
-@media (max-width: 768px)
-  for $i in 1 .. 12
-    .col-md-{$i}
-      flex 0 0 ($i / 12) * 100%
-      max-width ($i / 12) * 100%
+// Breakpoints responsivos
+@media (min-width: 576px) // sm
+  for i in 1..13
+    .col-sm-{i}
+      flex: 0 0 (i / 12) * 100%
+      max-width: (i / 12) * 100%
 
-// Responsividade para celulares (máx. 480px)
-@media (max-width: 480px)
-  for $i in 1 .. 12
-    .col-sm-{$i}
-      flex 0 0 100%
-      max-width 100%
+@media (min-width: 768px) // md
+  for i in 1..13
+    .col-md-{i}
+      flex: 0 0 (i / 12) * 100%
+      max-width: (i / 12) * 100%
+
+@media (min-width: 992px) // lg
+  for i in 1..13
+    .col-lg-{i}
+      flex: 0 0 (i / 12) * 100%
+      max-width: (i / 12) * 100%
+
+@media (min-width: 1200px) // xl
+  for i in 1..13
+    .col-xl-{i}
+      flex: 0 0 (i / 12) * 100%
+      max-width: (i / 12) * 100%
+
+// Classes utilitárias
+.w-full
+  width 100%
+
+.h-full
+  height 100%
+
+.h-dvh
+  min-height 100dvh
+
+.min-h-dvh
+  min-height 100dvh
+
+// Flexbox
+.flex-center
+  display flex
+  justify-content center
+  align-items center
+
+// Visibilidade
+@media screen and (max-width: 576px)
+  .hidden-sm
+    display none

@@ -6,7 +6,7 @@
 .btn
   background-color $color-blue
   color #fff
-  padding 10px 20px
+  padding 20px
   border-radius 5px
   border none
   cursor pointer
@@ -37,9 +37,34 @@
 /*******************************
  * Inputs
  *******************************/
+ 
+form.form
+  max-width 368px
+  width 100%
+  margin 0 auto
+  padding 25px
+  display flex
+  flex-direction column
+  gap: 15px
+ 
+form.form .form-group
+  display flex
+  flex-direction column
 
-.form-control
-  padding 10px
+form.form fieldset
+  border 0
+  padding 0
+  margin 0
+  margin-bottom 20px
+  font-weight bold
+
+form.form label
+  color $color-steel-blue
+  font-weight bold
+  margin-bottom 5px
+
+form.form input
+  padding 15px
   border-radius 5px
   border 2px solid $color-light-steel-blue
   font-size 16px
@@ -48,5 +73,12 @@
   outline none
   color $color-charcoal-blue
 
-.form-control:focus
+form.form input:focus
   border-color $color-blue
+  
+// Ancora
+a
+  font-size 13px
+  color $color-blue
+  font-weight bold
+  transition color 0.3s
