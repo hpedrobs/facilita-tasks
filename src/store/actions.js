@@ -11,4 +11,7 @@ export default {
     toggleComplete({ commit }, taskId) {
         commit("toggleComplete", taskId)
     },
+    setUser({ commit }, user) {
+        commit("setUser", user)
+    },
 }

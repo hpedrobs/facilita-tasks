@@ -16,4 +16,5 @@ export default {
             return priorityOrder[a.priority] - priorityOrder[b.priority]
         })
     },
+    getUser: (state) => state.user,
 }

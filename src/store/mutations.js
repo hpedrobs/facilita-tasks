@@ -23,4 +23,10 @@ export default {
             localStorage.setItem("tasks", JSON.stringify(state.tasks))
         }
     },
+    setUser(state, user) {
+        if (!user.username) return
+
+        state.user = user
+        localStorage.setItem("user", JSON.stringify(state.user))
+    },
 }
