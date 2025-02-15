@@ -1,7 +1,16 @@
-<script setup></script>
+<script>
+import AddTask from "@/components/AddTask.vue"
+
+export default {
+    name: "HomeView",
+    components: {
+        AddTask,
+    },
+}
+</script>
 
 <template>
-    <h1>Home</h1>
+    <AddTask />
 </template>
 
 <style scoped></style>
