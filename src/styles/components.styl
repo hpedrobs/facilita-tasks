@@ -5,7 +5,7 @@
 // Botão padrão
 .btn
   background-color $color-blue
-  color #fff
+  color $color-white
   padding 20px
   border-radius 5px
   border none
@@ -19,6 +19,9 @@
 .btn:disabled
   background-color $color-cadet-blue
   cursor not-allowed
+
+  &:hover
+    background-color darken($color-cadet-blue, 10%)
 
 // Botão verde
 .btn-green
@@ -39,7 +42,6 @@
  *******************************/
  
 form.form
-  max-width 368px
   width 100%
   margin 0 auto
   padding 25px
@@ -63,7 +65,7 @@ form.form label
   font-weight bold
   margin-bottom 5px
 
-form.form input
+form.form input, form.form textarea
   padding 15px
   border-radius 5px
   border 2px solid $color-light-steel-blue
@@ -73,9 +75,46 @@ form.form input
   outline none
   color $color-charcoal-blue
 
-form.form input:focus
+form.form input:focus, form.form textarea:focus
   border-color $color-blue
-  
+
+form.form .radio-group
+  display: flex
+  gap: 20px
+
+form.form .radio-container
+  display: flex
+  align-items: center
+  font-family: Arial, sans-serif
+  font-size: 14px
+  color: $color-steel-blue
+  cursor: pointer
+
+  input
+    display: none
+
+  .radio-check
+    width: 16px
+    height: 16px
+    border: 2px solid $color-light-steel-blue
+    border-radius: 50%
+    display: inline-block
+    position: relative
+    margin-right: 8px
+
+  input:checked + .radio-check
+    &::after
+      content: ""
+      width: 8px
+      height: 8px
+      background-color: $color-blue
+      border-radius: 50%
+      position: absolute
+      top: 50%
+      left: 50%
+      transform: translate(-50%, -50%)
+
+
 // Ancora
 a
   font-size 13px
@@ -87,6 +126,7 @@ a
  * Icones
  *******************************/
 .icon-circle
+  border none
   width 50px
   height 50px
   display flex
@@ -98,3 +138,45 @@ a
   font-size 20px
   margin-bottom 20px
   transition background-color 0.3s
+
+  &:hover
+    background-color darken($color-green, 10%)
+
+/*******************************
+ * Modal
+ *******************************/
+.modal-overlay
+  position fixed
+  top 0
+  left 0
+  width 100%
+  height 100%
+  background rgba($color-steel-blue-dark, 0.6)
+  display flex
+  justify-content center
+  align-items center
+  z-index 1000
+
+.close-btn-content
+  width auto
+  height auto
+  display flex
+  justify-content end
+
+  button
+    background none
+    border none
+    cursor pointer
+    transition background 0.3s
+
+    &:hover
+      background $color-white
+      border-radius 4px
+
+.modal-content
+  background $color-white
+  padding 20px
+  border-radius 8px
+  box-shadow 0 2px 10px rgba(0, 0, 0, 0.2)
+  max-width 525px
+  width 100%
