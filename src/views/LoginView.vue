@@ -49,3 +49,8 @@ export default {
         </div>
     </section>
 </template>
+
+<style lang="stylus" scoped>
+.form
+  max-width 368px
+</style>
