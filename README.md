@@ -75,7 +75,7 @@ facilita-tasks/
 ```
 
 ## Deploy
-O projeto será hospedado e o link de visualização será disponibilizado em breve.
+O projeto está hospedado e o link é https://hpedrobs.github.io/facilita-tasks.
 
 ## Autor
 Pedro Henrique
