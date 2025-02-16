@@ -17,4 +17,7 @@ export default {
         })
     },
     getUser: (state) => state.user,
+    getIncompleteTasksCount: (state) => {
+        return state.tasks.filter((task) => !task.completed).length
+    },
 }

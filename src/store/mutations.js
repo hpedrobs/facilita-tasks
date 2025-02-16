@@ -1,6 +1,6 @@
 export default {
     addTask(state, task) {
-        if (!task.title || !task.status) return
+        if (!task.title) return
 
         state.tasks.push(task)
         localStorage.setItem("tasks", JSON.stringify(state.tasks))

@@ -5,7 +5,7 @@
         </button>
 
         <Modal :isOpen="showModal" @close="showModal = false">
-            <form class="form w-full" action="/" method="get" @submit.prevent="addTask">
+            <form class="form w-full" action="/" method="get" @submit.prevent="add">
                 <h3>Cadastrar Tarefa</h3>
 
                 <div class="form-group w-full">
@@ -20,26 +20,26 @@
 
                 <div class="radio-group">
                     <label class="radio-container">
-                        <input type="radio" value="urgente" v-model="task.status" />
+                        <input type="radio" value="Urgente" v-model="task.status" />
                         <span class="radio-check"></span>
                         Urgente
                     </label>
                     <label class="radio-container">
-                        <input type="radio" value="importante" v-model="task.status" />
+                        <input type="radio" value="Importante" v-model="task.status" />
                         <span class="radio-check"></span>
                         Importante
                     </label>
                 </div>
 
-                <button type="submit" class="btn btn-green" :disabled="!task.title || !task.status">
-                    Entrar
-                </button>
+                <button type="submit" class="btn btn-green" :disabled="!task.title">Entrar</button>
             </form>
         </Modal>
     </div>
 </template>
 
 <script>
+import { mapActions } from "vuex"
+
 import Modal from "./Modal.vue"
 import PlusIcon from "@/assets/icons/plus-icon.svg"
 
@@ -60,8 +60,9 @@ export default {
         }
     },
     methods: {
-        addTask() {
-            this.$store.commit("addTask", this.task)
+        ...mapActions(["addTask"]),
+        add() {
+            this.addTask(this.task)
             this.resetTask()
             this.showModal = false
         },
