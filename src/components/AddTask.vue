@@ -31,7 +31,9 @@
                     </label>
                 </div>
 
-                <button type="submit" class="btn btn-green" :disabled="!task.title">Entrar</button>
+                <button type="submit" class="btn btn-green" :disabled="!task.title">
+                    Adicionar
+                </button>
             </form>
         </Modal>
     </div>

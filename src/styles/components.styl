@@ -37,6 +37,26 @@
 .btn-red:hover
   background-color darken($color-red, 10%)
 
+.btn-options
+  color #5D7893
+  background transparent
+  border none
+  font-size 15px
+  display flex
+  justify-content center
+  align-items center
+  gap 5px
+
+  span
+    background-color #D6E6EF
+    width 9px
+    height 9px
+    border-radius 50%
+
+  &:hover span
+    background-color #5ECDA5
+
+
 /*******************************
  * Inputs
  *******************************/
@@ -47,7 +67,7 @@ form.form
   padding 25px
   display flex
   flex-direction column
-  gap: 15px
+  gap 15px
  
 form.form .form-group
   display flex
@@ -79,40 +99,40 @@ form.form input:focus, form.form textarea:focus
   border-color $color-blue
 
 form.form .radio-group
-  display: flex
-  gap: 20px
+  display flex
+  gap 20px
 
 form.form .radio-container
-  display: flex
-  align-items: center
-  font-family: Arial, sans-serif
-  font-size: 14px
-  color: $color-steel-blue
-  cursor: pointer
+  display flex
+  align-items center
+  font-family Arial, sans-serif
+  font-size 14px
+  color $color-steel-blue
+  cursor pointer
 
   input
-    display: none
+    display none
 
   .radio-check
-    width: 16px
-    height: 16px
-    border: 2px solid $color-light-steel-blue
-    border-radius: 50%
-    display: inline-block
-    position: relative
-    margin-right: 8px
+    width 16px
+    height 16px
+    border 2px solid $color-light-steel-blue
+    border-radius 50%
+    display inline-block
+    position relative
+    margin-right 8px
 
   input:checked + .radio-check
     &::after
-      content: ""
-      width: 8px
-      height: 8px
-      background-color: $color-blue
-      border-radius: 50%
-      position: absolute
-      top: 50%
-      left: 50%
-      transform: translate(-50%, -50%)
+      content ""
+      width 8px
+      height 8px
+      background-color $color-blue
+      border-radius 50%
+      position absolute
+      top 50%
+      left 50%
+      transform translate(-50%, -50%)
 
 
 // Ancora
@@ -153,15 +173,17 @@ a
   height 100%
   background rgba($color-steel-blue-dark, 0.6)
   display flex
+  opacity 1 !important
   justify-content center
   align-items center
   z-index 1000
+  visibility visible
 
 .close-btn-content
   width auto
   height auto
   display flex
-  justify-content end
+  justify-content flex-end
 
   button
     background none
@@ -180,6 +202,42 @@ a
   box-shadow 0 2px 10px rgba(0, 0, 0, 0.2)
   max-width 525px
   width 100%
+  box-sizing border-box
+
+/*******************************
+ * Tooltip
+ *******************************/
+.tooltip-container
+  position relative
+  display inline-block
+
+.tooltip
+  position absolute
+  bottom 100%
+  left 50%
+  transform translateX(-50%)
+  box-shadow 0 4px 6px rgba(0, 0, 0, 0.1)
+  background #FFF
+  color #000
+  padding 8px 12px
+  border-radius 4px
+  white-space nowrap
+  font-size 14px
+  opacity 0.9
+  visibility hidden
+  z-index 900
+
+.tooltip-container:hover .tooltip
+  visibility visible
+
+.task-item-options
+  background transparent
+  border none
+  cursor pointer
+
+  img
+    height 10px
+    width 10px
 
 /*******************************
  * Textos
@@ -195,3 +253,8 @@ p
   font-size 16px
   line-height 1.5
  
+.text-center
+  text-align center
+
+.gap-15
+  gap 15px

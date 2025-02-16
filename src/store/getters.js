@@ -20,4 +20,29 @@ export default {
     getIncompleteTasksCount: (state) => {
         return state.tasks.filter((task) => !task.completed).length
     },
+    getTasksByFilter: (state) => (filter) => {
+        switch (filter) {
+            case "Finalizadas":
+                return state.tasks.filter((task) => task.completed)
+            case "Urgentes":
+                return state.tasks.filter((task) => task.status === "Urgente")
+            case "Importantes":
+                return state.tasks.filter((task) => task.status === "Importante")
+            case "Outras":
+                return state.tasks.filter((task) => !task.status)
+            case "Todas":
+                return state.tasks
+            default:
+                return state.tasks
+        }
+    },
+    getFilterCounts: (state) => {
+        return {
+            Todas: state.tasks.length,
+            Urgentes: state.tasks.filter((task) => task.status === "Urgente").length,
+            Importantes: state.tasks.filter((task) => task.status === "Importante").length,
+            Outras: state.tasks.filter((task) => !task.status).length,
+            Finalizadas: state.tasks.filter((task) => task.completed).length,
+        }
+    },
 }

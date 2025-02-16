@@ -10,9 +10,28 @@
 
         <div class="flex-center">
             <small :class="statusStyle">{{ item.status }}</small>
-            <button class="task-item-options">
-                <img :src="ThreeReadyIcon" />
-            </button>
+
+            <div v-if="!item.completed" class="tooltip-container">
+                <button class="task-item-options">
+                    <img :src="ThreeReadyIcon" />
+                </button>
+
+                <div class="tooltip">
+                    <button class="btn-options" @click="showModalUpdateTask = true">
+                        <span></span>
+                        Editar
+                    </button>
+
+                    <button class="btn-options" @click="showModalRemoveTask = true">
+                        <span></span>
+                        Excluir
+                    </button>
+                </div>
+                <UpdateTask :showModalUpdateTask="showModalUpdateTask" :item="item"
+                    @update:showModalUpdateTask="showModalUpdateTask = $event" />
+                <RemoveTask :showModalRemoveTask="showModalRemoveTask" :taskId="item.id"
+                    @update:showModalRemoveTask="showModalRemoveTask = $event" />
+            </div>
         </div>
     </li>
 </template>
@@ -20,11 +39,18 @@
 <script>
 import { mapActions } from "vuex"
 
-import ThreeReadyIcon from "@/assets/icons/three-ready-icon.svg"
 import CheckIcon from "@/assets/icons/check-icon.svg"
+import ThreeReadyIcon from "@/assets/icons/three-ready-icon.svg"
+
+import UpdateTask from "./UpdateTask.vue"
+import RemoveTask from "./RemoveTask.vue"
 
 export default {
     name: "TaskItem",
+    components: {
+        UpdateTask,
+        RemoveTask,
+    },
     props: {
         item: {
             type: Object,
@@ -33,8 +59,10 @@ export default {
     },
     data() {
         return {
-            ThreeReadyIcon,
             CheckIcon,
+            ThreeReadyIcon,
+            showModalUpdateTask: false,
+            showModalRemoveTask: false,
         }
     },
     methods: {
@@ -104,7 +132,6 @@ export default {
   height 35px
   cursor pointer
 
-
 .flex-center
   gap 10px
 
@@ -128,13 +155,4 @@ export default {
 .status-urgent
   background-color #FF2E79
   font-size bold
-
-.task-item-options
-  background transparent
-  border none
-  cursor pointer
-
-  img
-    height 10px
-    width 10px
 </style>

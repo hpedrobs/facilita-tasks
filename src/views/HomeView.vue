@@ -1,18 +1,22 @@
 <template>
-    <div class="container w-full h-full flex-center">
-        <div class="w-full">
-            <h1>Minhas Tarefas</h1>
-            <p>
-                Olá <span>Eduardo Pereira</span>, você tem
-                <span>{{ incompleteTasksCount }} tarefas</span> pendentes.
-            </p>
+    <div class="home-view">
+        <OrderedTasksSidebar :selectedCategory="selectedCategory" @category-selected="updateCategoryFilter" />
+
+        <div class="container w-full h-full flex-center">
+            <div class="w-full">
+                <h1>Minhas Tarefas</h1>
+                <p>
+                    Olá <span>{{ user.username }}</span>, você tem <span>{{ incompleteTasksCount }} tarefas</span>
+                    pendentes.
+                </p>
+            </div>
+
+            <SearchBar @search-updated="updateSearch" />
+
+            <ToDoList :tasks="filteredTasks" />
+
+            <AddTask />
         </div>
-
-        <SearchBar @search-updated="updateSearch" />
-
-        <ToDoList :tasks="tasks" />
-
-        <AddTask />
     </div>
 </template>
 
@@ -20,6 +24,7 @@
 import { mapGetters } from "vuex"
 
 // Components
+import OrderedTasksSidebar from "@/components/OrderedTasksSidebar.vue"
 import AddTask from "@/components/AddTask.vue"
 import SearchBar from "@/components/SearchBar.vue"
 import ToDoList from "@/components/ToDoList.vue"
@@ -27,6 +32,7 @@ import ToDoList from "@/components/ToDoList.vue"
 export default {
     name: "HomeView",
     components: {
+        OrderedTasksSidebar,
         AddTask,
         SearchBar,
         ToDoList,
@@ -34,6 +40,7 @@ export default {
     data() {
         return {
             searchQuery: "",
+            selectedCategory: "Todas",
         }
     },
     computed: {
@@ -41,20 +48,39 @@ export default {
             incompleteTasksCount: "getIncompleteTasksCount",
             getTasks: "getTasks",
             getFilteredTasks: "getFilteredTasks",
+            getTasksByFilter: "getTasksByFilter",
+            user: "getUser",
         }),
-        tasks() {
-            return this.searchQuery ? this.getFilteredTasks(this.searchQuery) : this.getTasks
+        filteredTasks() {
+            let tasks = this.getTasksByFilter(this.selectedCategory || "Todas")
+
+            if (this.searchQuery) {
+                return tasks.filter(
+                    (task) =>
+                        task.title.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
+                        task.description.toLowerCase().includes(this.searchQuery.toLowerCase()),
+                )
+            }
+
+            return tasks
         },
     },
     methods: {
         updateSearch(value) {
             this.searchQuery = value
         },
+        updateCategoryFilter(category) {
+            this.selectedCategory = category
+        },
     },
 }
 </script>
 
 <style lang="stylus" scoped>
+.home-view
+  display flex
+  height: 100%
+
 .container
   flex-direction column
   max-width 705px
