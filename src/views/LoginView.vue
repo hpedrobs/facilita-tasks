@@ -23,7 +23,7 @@ export default {
     <section class="w-full h-dvh bg-white">
         <div class="container-full p-0">
             <div class="row h-dvh">
-                <div class="hidden-sm col-md-6 col-lg-4 bg-blue flex-center overflow-hidden">
+                <div class="hidden-sm col-md-6 col-lg-4 bg-blue flex-center overflow-hidden w-full">
                     <img src="@/assets/images/logo-large.jpg" width="400" height="200" />
                 </div>
                 <div class="col col-md-6 col-lg-8 flex-center">
